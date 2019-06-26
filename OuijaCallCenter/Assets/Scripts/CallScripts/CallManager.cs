@@ -7,7 +7,7 @@ public class CallManager : MonoBehaviour {
 
     float phoneTimer;
     float roundTimer;
-    int score;
+    public int score;
     Phone phone;
 
     public Text scoreTextBox;
