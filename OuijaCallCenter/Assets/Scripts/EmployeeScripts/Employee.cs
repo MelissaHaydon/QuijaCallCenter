@@ -30,11 +30,11 @@ public class Employee : MonoBehaviour {
         {
             if(employeeType.ToString() == assignedCaller.prefferedEmployeeType.ToString())
             {
-                CallManager.instance.AddScore(3);
+                MoneyManager.instance.AddMoney(3);
             }
             else
             {
-                CallManager.instance.AddScore(1);
+                MoneyManager.instance.AddMoney(1);
             }
             curState = EmployeeState.Idle;
             sp.color = Color.white;

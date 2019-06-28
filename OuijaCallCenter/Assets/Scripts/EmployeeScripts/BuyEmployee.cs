@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BuyEmployee : MonoBehaviour {
 
@@ -12,11 +13,13 @@ public class BuyEmployee : MonoBehaviour {
 	}
 
 
-    private void OnMouseDown()
+    public void Purchase()
     {
-        if(CallManager.instance.score >= employeeCost)
+        if(MoneyManager.instance.totalMoney >= employeeCost)
         {
             EmployeeManager.instance.purchaseEmployee(employeeID, employeeCost);
         }
     }
+
+
 }

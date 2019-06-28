@@ -9,6 +9,7 @@ public class MenuManager : MonoBehaviour {
 
     public Canvas buyScreenCanvas;
     public Canvas inGameUICanvas;
+    public Canvas placeEmployeeCanvas;
 
     void Awake()
     {
@@ -31,6 +32,7 @@ public class MenuManager : MonoBehaviour {
     void Start () {
         inGameUICanvas.gameObject.SetActive(true);
         buyScreenCanvas.gameObject.SetActive(false);
+        placeEmployeeCanvas.gameObject.SetActive(false);
     }
 	
 	
@@ -42,11 +44,20 @@ public class MenuManager : MonoBehaviour {
     {
         buyScreenCanvas.gameObject.SetActive(true);
         inGameUICanvas.gameObject.SetActive(false);
+        placeEmployeeCanvas.gameObject.SetActive(false);
     }
 
-    public void CloseBuyScreen()
+    public void ShowMainScreen()
     {
         buyScreenCanvas.gameObject.SetActive(false);
+        placeEmployeeCanvas.gameObject.SetActive(false);
         inGameUICanvas.gameObject.SetActive(true);
+    }
+
+    public void ShowPlacementScreen()
+    {
+        buyScreenCanvas.gameObject.SetActive(false);
+        inGameUICanvas.gameObject.SetActive(false);
+        placeEmployeeCanvas.gameObject.SetActive(true);
     }
 }

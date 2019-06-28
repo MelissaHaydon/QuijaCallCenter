@@ -7,10 +7,8 @@ public class CallManager : MonoBehaviour {
 
     float phoneTimer;
     float roundTimer;
-    public int score;
     Phone phone;
 
-    public Text scoreTextBox;
     public Text winLoseTextBox;
 
     public static CallManager instance = null;
@@ -39,8 +37,6 @@ public class CallManager : MonoBehaviour {
     void Start () {
         callState = CallState.Idle;
         phone = GetComponent<Phone>();
-        scoreTextBox.text = score.ToString();
-        score = 0;
         phoneTimer = 0;
         roundTimer = 0;
 	}
@@ -53,9 +49,9 @@ public class CallManager : MonoBehaviour {
             callState = CallState.Ringing;
             phone.RingPhone();
         }
-        if(roundTimer >= 30f)
+        if(roundTimer >= 60f)
         {
-            if(score >= 20)
+            if(MoneyManager.instance.totalMoney >= 20)
             {
                 winGame();
             }
@@ -77,12 +73,6 @@ public class CallManager : MonoBehaviour {
         }
     }
 
-    public void AddScore(int scoreAmount)
-    {
-        score += scoreAmount;
-        scoreTextBox.text = score.ToString();
-    }
-
     void winGame()
     {
         winLoseTextBox.text = "You Win!";
@@ -101,4 +91,5 @@ public class CallManager : MonoBehaviour {
             callState = CallState.Assigning;
         }
     }
+
 }
