@@ -12,13 +12,25 @@ public class Employee : MonoBehaviour {
     public EmployeeType employeeType;
     float callTimer;
 
+    public int evilStat;
+    public int friendlyStat;
+    public int spookyStat;
+
+    EmployeeStat evil;
+    EmployeeStat friendly;
+    EmployeeStat spooky;
+
     SpriteRenderer sp;
 
 	void Start () {
         sp = GetComponent<SpriteRenderer>();
         curState = EmployeeState.Idle;
         callTimer = 0;
-	}
+
+        evil = new EmployeeStat(evilStat);
+        friendly = new EmployeeStat(friendlyStat);
+        spooky = new EmployeeStat(spookyStat);
+    }
 
     void Update()
     {

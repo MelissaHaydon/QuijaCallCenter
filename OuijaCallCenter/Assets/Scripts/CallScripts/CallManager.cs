@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CallManager : MonoBehaviour {
 
     float phoneTimer;
     float roundTimer;
     Phone phone;
+
+    public AudioClip ringSound;
+    AudioSource audioSC;
 
     public Text winLoseTextBox;
 
@@ -31,12 +35,12 @@ public class CallManager : MonoBehaviour {
             Destroy(gameObject);
         }
 
-        DontDestroyOnLoad(gameObject);
     }
 
     void Start () {
         callState = CallState.Idle;
         phone = GetComponent<Phone>();
+        audioSC = GetComponent<AudioSource>();
         phoneTimer = 0;
         roundTimer = 0;
 	}
@@ -48,6 +52,7 @@ public class CallManager : MonoBehaviour {
         {
             callState = CallState.Ringing;
             phone.RingPhone();
+            audioSC.PlayOneShot(ringSound);
         }
         if(roundTimer >= 60f)
         {
@@ -76,11 +81,14 @@ public class CallManager : MonoBehaviour {
     void winGame()
     {
         winLoseTextBox.text = "You Win!";
+        StartCoroutine("Wait");
+        SceneManager.LoadScene(0);
     }
 
     void loseGame()
     {
         winLoseTextBox.text = "You Lose!";
+        StartCoroutine("Wait");
     }
 
     private void OnMouseDown()
@@ -90,6 +98,12 @@ public class CallManager : MonoBehaviour {
             phone.AnswerPhone();
             callState = CallState.Assigning;
         }
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene(0);
     }
 
 }

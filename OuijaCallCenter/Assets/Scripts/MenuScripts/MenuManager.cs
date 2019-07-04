@@ -11,6 +11,8 @@ public class MenuManager : MonoBehaviour {
     public Canvas inGameUICanvas;
     public Canvas placeEmployeeCanvas;
 
+    public Image arrowImage;
+
     void Awake()
     {
 
@@ -26,7 +28,6 @@ public class MenuManager : MonoBehaviour {
             Destroy(gameObject);
         }
 
-        DontDestroyOnLoad(gameObject);
     }
 
     void Start () {
@@ -59,5 +60,10 @@ public class MenuManager : MonoBehaviour {
         buyScreenCanvas.gameObject.SetActive(false);
         inGameUICanvas.gameObject.SetActive(false);
         placeEmployeeCanvas.gameObject.SetActive(true);
+    }
+
+    public void hideImage()
+    {
+        arrowImage.gameObject.SetActive(false);
     }
 }

@@ -32,7 +32,6 @@ public class EmployeeManager : MonoBehaviour {
             Destroy(gameObject);
         }
 
-        DontDestroyOnLoad(gameObject);
     }
 
     void Start () {

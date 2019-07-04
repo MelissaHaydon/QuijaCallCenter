@@ -7,7 +7,7 @@ public class MoneyManager : MonoBehaviour {
 
     public Text moneyTextBox;
 
-    public int totalMoney;
+    public float totalMoney;
 
     public static MoneyManager instance = null;
 
@@ -26,12 +26,16 @@ public class MoneyManager : MonoBehaviour {
             Destroy(gameObject);
         }
 
-        DontDestroyOnLoad(gameObject);
     }
 
     void Start () {
         AddMoney(3);
 	}
+
+    public void CalculateMoney(EmployeeStat stat)
+    {
+        totalMoney += stat.Value;
+    }
 
     public void AddMoney(int moneyAmount)
     {
