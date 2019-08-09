@@ -11,16 +11,28 @@ public class Dialogue : MonoBehaviour
     private int index;
     public float typingSpeed;
 
+    public GameObject arrow01;
+    public GameObject arrow02;
+
     public GameObject continueButton;
+    bool arrowActivated;
+    public bool textFinished;
 
     private void Start()
     {
         StartCoroutine(Type());
+        arrow01.SetActive(false);
+        arrow01.SetActive(false);
+        continueButton.SetActive(false);
+        index = 0;
+        arrowActivated = false;
+        textFinished = false;
+
     }
 
     private void Update()
     {
-        if(textDisplay.text == sentences[index])
+        if(textDisplay.text == sentences[index] && !textFinished)
         {
             continueButton.SetActive(true);
         }
@@ -48,8 +60,16 @@ public class Dialogue : MonoBehaviour
         }
         else
         {
-            textDisplay.text = "";
+            //textDisplay.text = "";
             continueButton.SetActive(false);
+            
+        }
+        if(index == sentences.Length - 1 && !arrowActivated)
+        {
+            arrow01.SetActive(true);
+            arrowActivated = true;
         }
     }
+
+  
 }
