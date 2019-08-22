@@ -25,14 +25,13 @@ public class BuyNewEmployee : MonoBehaviour
     public GameObject arrow01;
     public GameObject arrow02;
 
-    bool purchased;
+
 
     void Start()
     {
         cloud.gameObject.SetActive(false);
         cloud.Stop();
-        ghostEmployee.SetActive(false);
-        purchased = false;
+        //ghostEmployee.SetActive(false);
         moneyDisplay.text = 10.ToString();
         mainCanvas.gameObject.SetActive(true);
         buyCanvas.gameObject.SetActive(false);
@@ -45,27 +44,35 @@ public class BuyNewEmployee : MonoBehaviour
         
     }
 
-    public void PurchaseEmployee(int employeeCost)
+    public void PurchaseEmployee(Employee employee)
     {
-        if (!purchased)
+        if (!employee.purchased && moneyManager.totalMoney >= employee.cost)
         {
             buyCanvas.gameObject.SetActive(false);
             mainCanvas.gameObject.SetActive(true);
-            ghostEmployee.SetActive(true);
-            cloud.gameObject.SetActive(true);
-            cloud.Play();
-            arrow02.SetActive(false);
 
-            moneyManager.addMoney(-employeeCost);
 
-            ghostPortrait.gameObject.SetActive(false);
-            comeBackSoon.gameObject.SetActive(true);
-            dialogue.textFinished = true;
-            dialogue.continueButton.SetActive(false);
-            dialogue.textDisplay.gameObject.SetActive(false);
-            dialogueDisplay2.gameObject.SetActive(true);
-            dialogueDisplay2.text = "Now sit back and watch the money roll in!";
-            purchased = true;
+            employee.gameObject.SetActive(true);
+            employee.buyCloud.gameObject.SetActive(true);
+            employee.buyCloud.Play();
+
+            moneyManager.addMoney(-employee.cost);
+
+            employee.soldPortrait.gameObject.SetActive(true);
+            employee.buyButton.enabled = false;
+
+            //ghostPortrait.gameObject.SetActive(false);
+            //comeBackSoon.gameObject.SetActive(true);
+
+            employee.purchased = true;
+            employee.isActive = true;
+
+            //dialogue.textFinished = true;
+            //dialogue.continueButton.SetActive(false);
+            //dialogue.textDisplay.gameObject.SetActive(false);
+            //dialogueDisplay2.gameObject.SetActive(true);
+            //dialogueDisplay2.text = "Now sit back and watch the money roll in!";
+            //purchased = true;
         }
         else
         {

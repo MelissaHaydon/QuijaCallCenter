@@ -13,7 +13,7 @@ public class MoneyManager : MonoBehaviour
 
     void Start()
     {
-        totalMoney = 0;
+        totalMoney = 10;
         moneyDisplay.text = totalMoney.ToString();
         moneyDisplay2.text = totalMoney.ToString();
     }

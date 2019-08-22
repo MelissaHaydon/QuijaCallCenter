@@ -18,6 +18,9 @@ public class Dialogue : MonoBehaviour
     bool arrowActivated;
     public bool textFinished;
 
+    public GameObject textBoxPanel;
+    public GameObject portraitPanel;
+
     private void Start()
     {
         StartCoroutine(Type());
@@ -60,8 +63,10 @@ public class Dialogue : MonoBehaviour
         }
         else
         {
-            //textDisplay.text = "";
+            textDisplay.text = "";
             continueButton.SetActive(false);
+            textBoxPanel.SetActive(false);
+            portraitPanel.SetActive(false);
             
         }
         if(index == sentences.Length - 1 && !arrowActivated)
