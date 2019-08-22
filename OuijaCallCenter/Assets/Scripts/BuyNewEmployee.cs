@@ -8,7 +8,8 @@ public class BuyNewEmployee : MonoBehaviour
 
     public GameObject ghostEmployee;
     public Dialogue dialogue;
-    public EmployeeMoney employMoney;
+
+    public MoneyManager moneyManager;
     public ParticleSystem cloud;
     public Image ghostPortrait;
 
@@ -44,7 +45,7 @@ public class BuyNewEmployee : MonoBehaviour
         
     }
 
-    public void PurchaseEmployee()
+    public void PurchaseEmployee(int employeeCost)
     {
         if (!purchased)
         {
@@ -54,8 +55,9 @@ public class BuyNewEmployee : MonoBehaviour
             cloud.gameObject.SetActive(true);
             cloud.Play();
             arrow02.SetActive(false);
-            moneyDisplay.text = 0.ToString();
-            moneyDisplay2.text = 0.ToString();
+
+            moneyManager.addMoney(-employeeCost);
+
             ghostPortrait.gameObject.SetActive(false);
             comeBackSoon.gameObject.SetActive(true);
             dialogue.textFinished = true;
@@ -63,7 +65,6 @@ public class BuyNewEmployee : MonoBehaviour
             dialogue.textDisplay.gameObject.SetActive(false);
             dialogueDisplay2.gameObject.SetActive(true);
             dialogueDisplay2.text = "Now sit back and watch the money roll in!";
-            employMoney.isActive = true;
             purchased = true;
         }
         else

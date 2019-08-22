@@ -8,17 +8,14 @@ public class EmployeeMoney : MonoBehaviour
 
     public int moneyEarning;
     public bool isActive;
-    public Text moneyDisplay;
-    public Text moneyDisplay2;
+
+    public MoneyManager moneyManager;
+
     public Animator coinAnim;
-
-    public int totalMoney;
-
     public float timer;
 
     void Start()
-    {
-        
+    {   
         timer = 0;
     }
 
@@ -31,9 +28,7 @@ public class EmployeeMoney : MonoBehaviour
         {
             timer = 0;
             coinAnim.SetTrigger("AnimateCoin");
-            totalMoney = totalMoney + moneyEarning;
-            moneyDisplay.text = totalMoney.ToString();
-            moneyDisplay2.text = totalMoney.ToString();
+            moneyManager.addMoney(moneyEarning);
         }
     }
 }
