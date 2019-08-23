@@ -21,6 +21,8 @@ public class Dialogue : MonoBehaviour
     public GameObject textBoxPanel;
     public GameObject portraitPanel;
 
+    public bool tutorialComplete;
+
     private void Start()
     {
         StartCoroutine(Type());
@@ -30,6 +32,7 @@ public class Dialogue : MonoBehaviour
         index = 0;
         arrowActivated = false;
         textFinished = false;
+        tutorialComplete = false;
 
     }
 
@@ -51,11 +54,27 @@ public class Dialogue : MonoBehaviour
 
     }
 
+    IEnumerator CloseWindow()
+    {
+        yield return new WaitForSeconds(2);
+        continueButton.SetActive(false);
+        textBoxPanel.SetActive(false);
+        portraitPanel.SetActive(false);
+        textDisplay.text = "";
+    }
+
     public void NextSentence()
     {
         continueButton.SetActive(false);
 
-        if(index < sentences.Length - 1)
+        if (tutorialComplete)
+        {
+            textDisplay.text = "Looks like you know what you're doing, good luck!";
+            index = sentences.Length -1;
+            StartCoroutine(CloseWindow());
+            
+        }
+        else if (index < sentences.Length - 1)
         {
             index++;
             textDisplay.text = "";
@@ -69,7 +88,7 @@ public class Dialogue : MonoBehaviour
             portraitPanel.SetActive(false);
             
         }
-        if(index == sentences.Length - 1 && !arrowActivated)
+        if(index == sentences.Length - 1 && !arrowActivated && !tutorialComplete)
         {
             arrow01.SetActive(true);
             arrowActivated = true;

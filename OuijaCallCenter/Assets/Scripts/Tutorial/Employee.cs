@@ -23,6 +23,8 @@ public class Employee : MonoBehaviour
     public Animator coinAnim;
     public float timer;
 
+    public Event[] events;
+
     void Start()
     {   
         timer = 0;

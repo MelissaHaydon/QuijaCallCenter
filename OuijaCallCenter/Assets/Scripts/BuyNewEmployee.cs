@@ -85,6 +85,7 @@ public class BuyNewEmployee : MonoBehaviour
         mainCanvas.gameObject.SetActive(false);
         buyCanvas.gameObject.SetActive(true);
         arrow01.SetActive(false);
+        dialogue.tutorialComplete = true;
     }
 
     public void closeBuyMenu()
