@@ -5,24 +5,37 @@ using UnityEngine.UI;
 
 public class Tutorial : MonoBehaviour
 {
-    enum TutorialState {Intro, AnswerCalls, BuyCharacter}
-    TutorialState tutState;
 
-    string introText01;
-    string introText02;
+    public DialogueManager dialogueManager;
+    public string[] sentences01;
+    public string[] sentences02;
+
+    public Sprite skeletonSprite;
+    public Sprite skeletonSprite02;
+
+    public GameObject arrow;
 
     void Start()
     {
-        tutState = TutorialState.Intro;
-
+        PlayIntroDialogue();
     }
-
 
     void Update()
     {
-        if(tutState == TutorialState.Intro)
-        {
+    }
 
-        }
+    void PlayIntroDialogue()
+    {
+        dialogueManager.NewText(sentences01, true, skeletonSprite02);
+    }
+
+    void PlaySecondDialogue()
+    {
+        dialogueManager.NewText(sentences01, true, skeletonSprite02);
+    }
+
+    public void RemoveArrow()
+    {
+        arrow.gameObject.SetActive(false);
     }
 }

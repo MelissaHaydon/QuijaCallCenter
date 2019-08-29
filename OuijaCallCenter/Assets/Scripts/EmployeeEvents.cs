@@ -7,26 +7,34 @@ public class EmployeeEvents : MonoBehaviour
 {
     public Employee[] employees;
     public Employee selectedEmployee;
+    public DialogueManager dialogueManager;
 
     Event chosenEvent;
-    public string[] sentences;
-    private int index;
+    string[] sentences;
+    string positiveResponse;
+    string negativeResponse;
 
-    public Text textDisplay;
-    public float typingSpeed;
+    bool eventActive;
 
-
-
+    float eventTimer;
+    public float timeBetweenEvents;
 
     void Start()
     {
-        
+        eventActive = false;
     }
 
-    
-    void Update()
+
+    private void Update()
     {
-        
+        eventTimer += Time.deltaTime;
+        if(eventTimer >= timeBetweenEvents && !eventActive)
+        {
+            ChooseEmployee();
+            ChooseEvent();
+            dialogueManager.NewTextWithResponse(sentences, positiveResponse, negativeResponse);
+            eventActive = true;
+        }
     }
 
     public void ChooseEmployee()
@@ -38,16 +46,26 @@ public class EmployeeEvents : MonoBehaviour
     {
         chosenEvent = selectedEmployee.events[Random.Range(0, selectedEmployee.events.Length - 1)];
         sentences = chosenEvent.sentences;
+        negativeResponse = chosenEvent.negativeResponse;
+        positiveResponse = chosenEvent.positiveResponse;
     }
 
-    IEnumerator Type()
+    public void EventResult(bool succeeded)
     {
-        foreach (char letter in sentences[index].ToCharArray())
+        if (succeeded)
         {
-            textDisplay.text += letter;
-            yield return new WaitForSeconds(typingSpeed);
+            selectedEmployee.ChangeHappiness(0.5f);
         }
-
+        else
+        {
+            selectedEmployee.ChangeHappiness(-0.5f);
+        }
     }
 
+    public void EventFinished()
+    {
+        eventActive = false;
+        eventTimer = 0;
+    }
+    
 }

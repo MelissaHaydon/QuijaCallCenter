@@ -12,12 +12,14 @@ public class Employee : MonoBehaviour
     public int cost;
     public bool purchased;
 
+    public float happiness;
+
     public GameObject buyPortrait;
     public GameObject soldPortrait;
+    public Sprite talkingSprite;
     public Button buyButton;
 
     public ParticleSystem buyCloud;
-
     public MoneyManager moneyManager;
 
     public Animator coinAnim;
@@ -33,8 +35,8 @@ public class Employee : MonoBehaviour
         gameObject.SetActive(false);
         soldPortrait.gameObject.SetActive(false);
         buyButton.enabled = true;
+        happiness = 1f;
 }
-
     
     void Update()
     {
@@ -46,5 +48,10 @@ public class Employee : MonoBehaviour
             coinAnim.SetTrigger("AnimateCoin");
             moneyManager.addMoney(moneyEarning);
         }
+    }
+
+    public void ChangeHappiness(float happinessChange)
+    {
+        happiness += happinessChange;
     }
 }
