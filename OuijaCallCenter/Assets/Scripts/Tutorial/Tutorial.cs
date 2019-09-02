@@ -7,6 +7,7 @@ public class Tutorial : MonoBehaviour
 {
 
     public DialogueManager dialogueManager;
+    public EmployeeEvents employEvents;
     public string[] sentences01;
     public string[] sentences02;
 
@@ -17,21 +18,22 @@ public class Tutorial : MonoBehaviour
 
     void Start()
     {
-        PlayIntroDialogue();
+        employEvents.enabled = false;
     }
 
     void Update()
     {
     }
 
-    void PlayIntroDialogue()
+    public void PlayIntroDialogue()
     {
-        dialogueManager.NewText(sentences01, true, skeletonSprite02);
+        dialogueManager.NewText(sentences01, true, skeletonSprite);
     }
 
-    void PlaySecondDialogue()
+    public void PlaySecondDialogue()
     {
-        dialogueManager.NewText(sentences01, true, skeletonSprite02);
+        dialogueManager.NewText(sentences02, true, skeletonSprite02);
+        employEvents.enabled = true;
     }
 
     public void RemoveArrow()
