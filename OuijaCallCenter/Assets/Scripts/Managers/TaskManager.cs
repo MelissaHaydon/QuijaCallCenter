@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class TaskManager : MonoBehaviour
 {
-    
+    public Task tasks01;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
-        
+        if (tasks01.allTasksComplete)
+        {
+
+        }
     }
 }

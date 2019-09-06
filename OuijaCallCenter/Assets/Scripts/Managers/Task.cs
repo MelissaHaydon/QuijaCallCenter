@@ -7,7 +7,7 @@ public class Task : MonoBehaviour
     bool task01Complete;
     bool task02Complete;
     bool task03Complete;
-    bool allTasksComplete;
+    public bool allTasksComplete;
 
     public BuyNewEmployee employeeManager;
     public MoneyManager moneyManager;
