@@ -20,9 +20,12 @@ public class EmployeeEvents : MonoBehaviour
     float eventTimer;
     public float timeBetweenEvents;
 
+    public int completedEvents;
+
     void Start()
     {
         eventActive = false;
+        completedEvents = 0;
     }
 
 
@@ -61,6 +64,7 @@ public class EmployeeEvents : MonoBehaviour
         if (succeeded)
         {
             selectedEmployee.ChangeHappiness(-0.25f);
+            completedEvents++;
             if (chosenEvent.moneyEvent)
             {
                 selectedEmployee.SpendMoney(chosenEvent.eventCost);

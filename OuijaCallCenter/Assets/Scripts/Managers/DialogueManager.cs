@@ -12,7 +12,8 @@ public class DialogueManager : MonoBehaviour
 
     public EmployeeEvents eventManager;
     public Tutorial tutorialManager;
-    Introduction introduction;
+    public Introduction introduction;
+    public Ending ending;
 
     public GameObject continueButton;
     public GameObject positiveResponseButton;
@@ -27,6 +28,8 @@ public class DialogueManager : MonoBehaviour
     bool hasResponse;
     bool answered;
     public bool tutorial;
+    int positionInText;
+    bool tutorialActive;
 
     int arrayLength;
 
@@ -36,6 +39,7 @@ public class DialogueManager : MonoBehaviour
         ResetValues();
         if(tutorial)
         tutorialManager.PlayIntroDialogue();
+        tutorialActive = true;
     }
 
     private void ResetValues()
@@ -45,6 +49,7 @@ public class DialogueManager : MonoBehaviour
         typingActive = false;
         answered = false;
         introduction = null;
+        ending = null;
         textDisplay.text = "";
         continueButton.SetActive(false);
         textBoxPanel.SetActive(false);
@@ -110,6 +115,19 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(Type());
     }
 
+    public void EndingText(string[] newSentences, Ending end, Sprite talkingSprite)
+    {
+        ResetValues();
+        ending = end;
+        sentences = newSentences;
+        typingActive = true;
+        portraitPanel.sprite = talkingSprite;
+        arrayLength = sentences.Length - 1;
+        textBoxPanel.SetActive(true);
+        portraitPanel.gameObject.SetActive(true);
+        StartCoroutine(Type());
+    }
+
     IEnumerator Type()
     {
         foreach (char letter in sentences[index].ToCharArray())
@@ -149,6 +167,10 @@ public class DialogueManager : MonoBehaviour
     {
         continueButton.SetActive(false);
 
+        if (tutorialActive && index == 1)
+        {
+            tutorialManager.DisplayArrow();
+        }
         if (index == 1 && hasResponse && !answered)
         {
             textDisplay.text = "";
@@ -169,7 +191,25 @@ public class DialogueManager : MonoBehaviour
             }
             else if (introduction != null)
             {
-                introduction.DisplayNamePicker();
+                if (positionInText == 0)
+                {
+                    introduction.DisplayNamePicker();
+                    positionInText++;
+                }
+                else if (positionInText == 1)
+                {
+                    introduction.ShowContract();
+                    positionInText++;
+                }
+                else if (positionInText == 2)
+                {
+                    introduction.LoadNextScene();
+                }
+                
+            }
+            else if (ending != null)
+            {
+
             }
             ResetValues();
         }
