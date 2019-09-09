@@ -12,11 +12,19 @@ public class BuyNewEmployee : MonoBehaviour
     public Canvas mainCanvas;
 
     public int employeeCount;
+    public int maxIndex;
+
+    public GameObject[] employeeScreens;
+
+    int indexOfPosition;
 
     void Start()
     {
         mainCanvas.gameObject.SetActive(true);
         buyCanvas.gameObject.SetActive(false);
+        employeeScreens[1].SetActive(false);
+        indexOfPosition = 0;
+        maxIndex = 1;
     }
 
     void Update()
@@ -62,5 +70,25 @@ public class BuyNewEmployee : MonoBehaviour
     {
         mainCanvas.gameObject.SetActive(true);
         buyCanvas.gameObject.SetActive(false);
+    }
+
+    public void BuyScreenRightArrow()
+    {
+        if(indexOfPosition < maxIndex)
+        {
+            employeeScreens[indexOfPosition].SetActive(false);
+            indexOfPosition++;
+            employeeScreens[indexOfPosition].SetActive(true);
+        }
+    }
+
+    public void BuyScreenLeftArrow()
+    {
+        if (indexOfPosition > 0)
+        {
+            employeeScreens[indexOfPosition].SetActive(false);
+            indexOfPosition--;
+            employeeScreens[indexOfPosition].SetActive(true);
+        }
     }
 }

@@ -83,6 +83,12 @@ public class TaskManager : MonoBehaviour
     {
         moneyManager.AddMoney(currentReward);
         taskButtonAnim.SetBool("Shake", false);
+        tick01.SetActive(false);
+        tick02.SetActive(false);
+        tick03.SetActive(false);
+        smallTick01.SetActive(false);
+        smallTick02.SetActive(false);
+        smallTick03.SetActive(false);
     }
 
     public void OpenTaskMenu()
