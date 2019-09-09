@@ -51,6 +51,7 @@ public class DialogueManager : MonoBehaviour
         introduction = null;
         ending = null;
         textDisplay.text = "";
+        sentences = null;
         continueButton.SetActive(false);
         textBoxPanel.SetActive(false);
         portraitPanel.gameObject.SetActive(false);
@@ -161,6 +162,7 @@ public class DialogueManager : MonoBehaviour
     public void SkipDialogue()
     {
         ResetValues();
+        tutorialActive = false;
     }
 
     public void NextSentence()

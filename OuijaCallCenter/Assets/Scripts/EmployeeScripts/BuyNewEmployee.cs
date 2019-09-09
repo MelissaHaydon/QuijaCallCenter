@@ -35,13 +35,15 @@ public class BuyNewEmployee : MonoBehaviour
             employee.buyCloud.gameObject.SetActive(true);
             employee.buyCloud.Play();
 
-            moneyManager.addMoney(-employee.cost);
+            moneyManager.RemoveMoney(-employee.cost);
 
             employee.soldPortrait.gameObject.SetActive(true);
             employee.buyButton.enabled = false;
 
             employee.purchased = true;
             employee.isActive = true;
+
+            employeeCount++;
 
         }
         else

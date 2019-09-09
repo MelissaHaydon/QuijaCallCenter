@@ -55,7 +55,7 @@ public class Employee : MonoBehaviour
         {
             timer = 0;
             coinAnim.SetTrigger("AnimateCoin");
-            moneyManager.addMoney(moneyEarning);
+            moneyManager.AddMoney(moneyEarning);
         }
     }
 
@@ -75,7 +75,7 @@ public class Employee : MonoBehaviour
 
     public void SpendMoney(int moneyAmount)
     {
-        moneyManager.addMoney(-moneyAmount);
+        moneyManager.RemoveMoney(-moneyAmount);
     }
 
     public void TakeBreak(float breakTime)

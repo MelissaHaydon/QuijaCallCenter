@@ -8,6 +8,7 @@ public class Tutorial : MonoBehaviour
 
     public DialogueManager dialogueManager;
     public EmployeeEvents employEvents;
+    public TaskManager taskManager;
     public string[] sentences01;
     public string[] sentences02;
     public string[] buyDialogue;
@@ -22,6 +23,8 @@ public class Tutorial : MonoBehaviour
     public Text buyText;
     int index;
 
+    public bool tutorialComplete;
+
     void Start()
     {
         employEvents.enabled = false;
@@ -30,10 +33,12 @@ public class Tutorial : MonoBehaviour
         arrow.SetActive(false);
         arrow02.SetActive(false);
         index = 0;
+        tutorialComplete = false;
     }
 
     void Update()
     {
+
     }
 
     public void PlayIntroDialogue()
@@ -48,21 +53,29 @@ public class Tutorial : MonoBehaviour
 
     public void BuyEmployeeTutorial()
     {
-        arrow.gameObject.SetActive(false);
-        blockout01.SetActive(true);
-        arrow02.SetActive(true);
-        buyTextBox.SetActive(true);
-        StartCoroutine(Type(buyDialogue));
+        if (!tutorialComplete)
+        {
+            arrow.gameObject.SetActive(false);
+            blockout01.SetActive(true);
+            arrow02.SetActive(true);
+            buyTextBox.SetActive(true);
+            StartCoroutine(Type(buyDialogue));
+            
+        }
     }
 
     public void PlaySecondDialogue()
     {
-        arrow02.SetActive(false);
-        blockout01.SetActive(false);
-        arrow02.SetActive(false);
-        buyTextBox.SetActive(false);
-        dialogueManager.NewText(sentences02, true, skeletonSprite02);
-        employEvents.enabled = true;
+        if (!tutorialComplete)
+        {
+            arrow02.SetActive(false);
+            blockout01.SetActive(false);
+            arrow02.SetActive(false);
+            buyTextBox.SetActive(false);
+            dialogueManager.NewText(sentences02, true, skeletonSprite02);
+            employEvents.enabled = true;
+            tutorialComplete = true;
+        }
     }
 
     IEnumerator Type(string[] sentences)
