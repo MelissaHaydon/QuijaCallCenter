@@ -19,6 +19,7 @@ public class Employee : MonoBehaviour
 
     public GameObject buyPortrait;
     public GameObject soldPortrait;
+    public GameObject moneyReadyCoin;
 
     SpriteRenderer spRend;
     public Sprite talkingSprite;
@@ -31,6 +32,7 @@ public class Employee : MonoBehaviour
 
     public Animator coinAnim;
     public float timer;
+    public bool moneyReady;
 
     public Event[] events;
 
@@ -45,17 +47,19 @@ public class Employee : MonoBehaviour
         buyButton.enabled = true;
         happiness = 1f;
         onBreak = false;
+        moneyReady = false;
+        moneyReadyCoin.SetActive(false);
+
 }
     
     void Update()
     {
-        if(isActive)
+        if(isActive && !onBreak)
         timer += Time.deltaTime;
-        if (isActive && timer>=earnRate && !onBreak)
+        if (isActive && timer>=earnRate && !onBreak && !moneyReady)
         {
-            timer = 0;
-            coinAnim.SetTrigger("AnimateCoin");
-            moneyManager.AddMoney(moneyEarning);
+            moneyReady = true;
+            moneyReadyCoin.SetActive(true);
         }
     }
 
@@ -90,5 +94,17 @@ public class Employee : MonoBehaviour
         yield return new WaitForSeconds(breakTime);
         spRend.sprite = atDeskSprite;
         onBreak = false;
+    }
+
+    private void OnMouseDown()
+    {
+        if (moneyReady)
+        {
+            moneyReady = false;
+            timer = 0;
+            coinAnim.SetTrigger("AnimateCoin");
+            moneyManager.AddMoney(moneyEarning);
+            moneyReadyCoin.SetActive(false);
+        }
     }
 }

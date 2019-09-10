@@ -71,7 +71,7 @@ public class TaskManager : MonoBehaviour
         currentReward = reward;
         rewardButton.enabled = true;
         rewardHider.SetActive(false);
-        taskButtonAnim.SetBool("Shake", true);
+        taskButtonAnim.SetBool("Shaking", true);
     }
 
     public void EnableTaskMenu()
@@ -82,7 +82,7 @@ public class TaskManager : MonoBehaviour
     public void CollectReward()
     {
         moneyManager.AddMoney(currentReward);
-        taskButtonAnim.SetBool("Shake", false);
+        taskButtonAnim.SetBool("Shaking", false);
         tick01.SetActive(false);
         tick02.SetActive(false);
         tick03.SetActive(false);

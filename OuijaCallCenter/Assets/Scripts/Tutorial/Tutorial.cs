@@ -15,7 +15,7 @@ public class Tutorial : MonoBehaviour
 
     public Sprite skeletonSprite;
     public Sprite skeletonSprite02;
-    public Button tempButton;
+    public GameObject tempButton;
 
     public GameObject arrow;
     public GameObject arrow02;
@@ -76,7 +76,8 @@ public class Tutorial : MonoBehaviour
             dialogueManager.NewText(sentences02, true, skeletonSprite02);
             employEvents.enabled = true;
             tutorialComplete = true;
-            tempButton.enabled = false;
+            tempButton.SetActive(false);
+
         }
     }
 

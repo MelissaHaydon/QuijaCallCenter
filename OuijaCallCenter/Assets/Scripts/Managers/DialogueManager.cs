@@ -30,6 +30,7 @@ public class DialogueManager : MonoBehaviour
     public bool tutorial;
     int positionInText;
     bool tutorialActive;
+    bool cancelled;
 
     int arrayLength;
 
@@ -45,6 +46,7 @@ public class DialogueManager : MonoBehaviour
     private void ResetValues()
     {
         index = 0;
+        cancelled = true;
         hasResponse = false;
         typingActive = false;
         answered = false;
@@ -85,6 +87,7 @@ public class DialogueManager : MonoBehaviour
         arrayLength = sentences.Length - 1;
         textBoxPanel.SetActive(true);
         portraitPanel.gameObject.SetActive(true);
+        cancelled = false;
         StartCoroutine(Type());
     }
 
@@ -98,6 +101,7 @@ public class DialogueManager : MonoBehaviour
         portraitPanel.sprite = eventManager.selectedEmployee.talkingSprite;
         hasResponse = true;
         typingActive = true;
+        cancelled = false;
         textBoxPanel.SetActive(true);
         portraitPanel.gameObject.SetActive(true);
         StartCoroutine(Type());
@@ -112,6 +116,7 @@ public class DialogueManager : MonoBehaviour
         portraitPanel.sprite = talkingSprite;
         arrayLength = sentences.Length - 1;
         textBoxPanel.SetActive(true);
+        cancelled = false;
         portraitPanel.gameObject.SetActive(true);
         StartCoroutine(Type());
     }
@@ -125,16 +130,21 @@ public class DialogueManager : MonoBehaviour
         portraitPanel.sprite = talkingSprite;
         arrayLength = sentences.Length - 1;
         textBoxPanel.SetActive(true);
+        cancelled = false;
         portraitPanel.gameObject.SetActive(true);
         StartCoroutine(Type());
     }
 
     IEnumerator Type()
     {
+        
         foreach (char letter in sentences[index].ToCharArray())
         {
-            textDisplay.text += letter;
-            yield return new WaitForSeconds(typingSpeed);
+            if (!cancelled)
+            {
+                textDisplay.text += letter;
+                yield return new WaitForSeconds(typingSpeed);
+            }
         }
 
     }
