@@ -118,7 +118,9 @@ public class DialogueManager : MonoBehaviour
         textBoxPanel.SetActive(true);
         cancelled = false;
         portraitPanel.gameObject.SetActive(true);
+        tutorialActive = false;
         StartCoroutine(Type());
+
     }
 
     public void EndingText(string[] newSentences, Ending end, Sprite talkingSprite)

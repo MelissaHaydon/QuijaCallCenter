@@ -1661,10 +1661,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textDisplay: {fileID: 868399629}
   sentences: []
-  typingSpeed: 0.03
+  typingSpeed: 0.01
   eventManager: {fileID: 0}
   tutorialManager: {fileID: 0}
   introduction: {fileID: 1771817322}
+  ending: {fileID: 0}
   continueButton: {fileID: 252117073}
   positiveResponseButton: {fileID: 1771647943}
   negativeResponseButton: {fileID: 361414045}
