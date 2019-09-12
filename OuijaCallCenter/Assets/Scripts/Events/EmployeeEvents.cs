@@ -31,6 +31,7 @@ public class EmployeeEvents : MonoBehaviour
 
     private void Update()
     {
+        if(!eventActive)
         eventTimer += Time.deltaTime;
         if(eventTimer >= timeBetweenEvents && !eventActive)
         {

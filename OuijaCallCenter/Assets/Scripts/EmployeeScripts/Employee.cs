@@ -20,6 +20,7 @@ public class Employee : MonoBehaviour
     public GameObject buyPortrait;
     public GameObject soldPortrait;
     public GameObject moneyReadyCoin;
+    public GameObject computerScreen;
 
     SpriteRenderer spRend;
     public Sprite talkingSprite;
@@ -33,6 +34,8 @@ public class Employee : MonoBehaviour
     public Animator coinAnim;
     public float timer;
     public bool moneyReady;
+    AudioSource audioSc;
+    public AudioClip moneyGainSound;
 
     public Event[] events;
 
@@ -49,6 +52,8 @@ public class Employee : MonoBehaviour
         onBreak = false;
         moneyReady = false;
         moneyReadyCoin.SetActive(false);
+        audioSc = GetComponent<AudioSource>();
+        computerScreen.SetActive(true);
 
 }
     
@@ -91,9 +96,11 @@ public class Employee : MonoBehaviour
     {
         spRend.sprite = emptyDeskSprite;
         onBreak = true;
+        computerScreen.SetActive(false);
         yield return new WaitForSeconds(breakTime);
         spRend.sprite = atDeskSprite;
         onBreak = false;
+        computerScreen.SetActive(true);
     }
 
     private void OnMouseDown()
@@ -105,6 +112,7 @@ public class Employee : MonoBehaviour
             coinAnim.SetTrigger("AnimateCoin");
             moneyManager.AddMoney(moneyEarning);
             moneyReadyCoin.SetActive(false);
+            audioSc.PlayOneShot(moneyGainSound);
         }
     }
 }

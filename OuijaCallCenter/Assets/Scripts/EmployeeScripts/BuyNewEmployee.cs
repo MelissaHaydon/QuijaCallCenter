@@ -14,6 +14,9 @@ public class BuyNewEmployee : MonoBehaviour
     public int employeeCount;
     public int maxIndex;
 
+    AudioSource audioSc;
+    public AudioClip buyEmployeeSound;
+
     public GameObject[] employeeScreens;
 
     int indexOfPosition;
@@ -25,6 +28,7 @@ public class BuyNewEmployee : MonoBehaviour
         employeeScreens[1].SetActive(false);
         indexOfPosition = 0;
         maxIndex = 1;
+        audioSc = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -50,6 +54,8 @@ public class BuyNewEmployee : MonoBehaviour
 
             employee.purchased = true;
             employee.isActive = true;
+
+            audioSc.PlayOneShot(buyEmployeeSound);
 
             employeeCount++;
 
