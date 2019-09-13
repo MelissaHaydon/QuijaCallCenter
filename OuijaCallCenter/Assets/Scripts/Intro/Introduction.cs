@@ -87,9 +87,9 @@ public class Introduction : MonoBehaviour
         introductionText02[1] = "I'm sure it is";
         introductionText02[2] = "Well then " + chosenName;
         introductionText02[3] = "I have some bad news";
-        introductionText02[4] = "You're, how do I put it...";
-        introductionText02[5] = "Flat broke";
-        introductionText02[6] = "If you want to get out of here you're going to have to earn it";
-        introductionText02[7] = "Now if you'd just sign this contract, we can get you started";
+        introductionText02[4] = "You're not going anywhere bud";
+        introductionText02[5] = "If you want to cross the river, you're going to need a ticket";
+        introductionText02[6] = "And since you've got no money, you're going to have to earn it";
+        introductionText02[7] = "Now if you'd just sign this contract we can get you started";
     }
 }

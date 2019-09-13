@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TaskManager : MonoBehaviour
 {
@@ -27,6 +28,8 @@ public class TaskManager : MonoBehaviour
     int currentReward;
 
     public MoneyManager moneyManager;
+
+    
 
     void Start()
     {
@@ -89,6 +92,7 @@ public class TaskManager : MonoBehaviour
         smallTick01.SetActive(false);
         smallTick02.SetActive(false);
         smallTick03.SetActive(false);
+        SceneManager.LoadScene(3);
     }
 
     public void OpenTaskMenu()

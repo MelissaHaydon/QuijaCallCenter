@@ -43,32 +43,32 @@ public class Task : MonoBehaviour
 
     void CheckTask01()
     {
-        if(employeeManager.employeeCount >= 2)
+        if(employeeManager.employeeCount >= 4)
         {
             task01Complete = true;
             taskManager.Task01Complete();
         }
-        task01Status.text = employeeManager.employeeCount.ToString() + "/2";
+        task01Status.text = employeeManager.employeeCount.ToString() + "/4";
     }
 
     void CheckTask02()
     {
-        if(moneyManager.lifetimeMoney >= 1000)
+        if(moneyManager.lifetimeMoney >= 1500)
         {
             task02Complete = true;
             taskManager.Task02Complete();
         }
-        task02Status.text = moneyManager.lifetimeMoney.ToString() + "/1000";
+        task02Status.text = moneyManager.lifetimeMoney.ToString() + "/1500";
     }
 
     void CheckTask03()
     {
-        if(eventManager.completedEvents >= 3)
+        if(eventManager.completedEvents >= 5)
         {
             task03Complete = true;
             taskManager.Task03Complete();
         }
-        task03Status.text = eventManager.completedEvents.ToString() + "/2";
+        task03Status.text = eventManager.completedEvents.ToString() + "/5";
     }
     
 }

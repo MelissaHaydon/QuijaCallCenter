@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -37,10 +38,13 @@ public class DialogueManager : MonoBehaviour
 
     void Start()
     {
-        ResetValues();
-        if(tutorial)
-        tutorialManager.PlayIntroDialogue();
-        tutorialActive = true;
+        //ResetValues();
+        tutorialActive = false;
+        if (tutorial)
+        {
+            tutorialManager.PlayIntroDialogue();
+            tutorialActive = true;
+        }
     }
 
     private void ResetValues()
@@ -125,7 +129,7 @@ public class DialogueManager : MonoBehaviour
 
     public void EndingText(string[] newSentences, Ending end, Sprite talkingSprite)
     {
-        ResetValues();
+        
         ending = end;
         sentences = newSentences;
         typingActive = true;
@@ -134,6 +138,7 @@ public class DialogueManager : MonoBehaviour
         textBoxPanel.SetActive(true);
         cancelled = false;
         portraitPanel.gameObject.SetActive(true);
+        tutorialActive = false;
         StartCoroutine(Type());
     }
 
@@ -221,9 +226,9 @@ public class DialogueManager : MonoBehaviour
                 }
                 
             }
-            else if (ending != null)
+            else if (ending != null && index == 3)
             {
-
+                SceneManager.LoadScene(0);
             }
             ResetValues();
         }

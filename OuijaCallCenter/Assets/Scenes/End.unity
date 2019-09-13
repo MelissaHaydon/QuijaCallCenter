@@ -702,7 +702,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 647028602}
+      - m_Target: {fileID: 0}
         m_MethodName: ChooseName
         m_Mode: 0
         m_Arguments:
@@ -799,7 +799,7 @@ MonoBehaviour:
   typingSpeed: 0.03
   eventManager: {fileID: 0}
   tutorialManager: {fileID: 0}
-  introduction: {fileID: 647028602}
+  introduction: {fileID: 0}
   ending: {fileID: 0}
   continueButton: {fileID: 724387341}
   positiveResponseButton: {fileID: 1800419576}
@@ -818,27 +818,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 647028600}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 950dcfa65988b9741a9bf2b9a3de519a, type: 3}
+  m_Script: {fileID: 11500000, guid: 98e952eb1d9d05c40b387295988c551f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introductionText:
-  - Next!
-  - So, you finally made it huh
-  - Well, what's your name?
-  introductionText03:
-  - Wonderful
-  - Welcome to the team, now it's time to get to work
+  introductionText03: []
   talkingSprite: {fileID: 21300000, guid: 33b06a2a563584e4bbc86bd926e75cf3, type: 3}
   charonSprite: {fileID: 21300000, guid: 2971470ab05b9894cac92e86e27be845, type: 3}
   charonAnnoyedSprite: {fileID: 21300000, guid: b36b5164b82a73f449a8ab50282bc840,
     type: 3}
   spRend: {fileID: 1501367276}
-  textEntryBox: {fileID: 828851110}
-  contract: {fileID: 0}
-  signature: {fileID: 0}
-  signatureButton: {fileID: 0}
+  chosenName: 
   dialogueManager: {fileID: 647028601}
-  heldData: {fileID: 1543037881}
+  heldData: {fileID: 0}
 --- !u!4 &647028603
 Transform:
   m_ObjectHideFlags: 0
@@ -1213,6 +1204,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: NegativeResponse
+      objectReference: {fileID: 0}
+    - target: {fileID: 6264791175025421012, guid: 6b7f8b1513fdf234d95820a5a45f81ee,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6264791175025421013, guid: 6b7f8b1513fdf234d95820a5a45f81ee,
         type: 3}
@@ -1626,6 +1622,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1668579090}
   m_CullTransparentMesh: 0
+--- !u!1 &1680417412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1680417413}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1680417413
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1680417412}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 842.5634, y: 528.43304, z: -314.625}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1800419573
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1637,6 +1663,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PositiveResponse
+      objectReference: {fileID: 0}
+    - target: {fileID: 3122234179296590052, guid: 5ae1ed08b23ba8b4ea31c2fe536864e8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3122234179296590059, guid: 5ae1ed08b23ba8b4ea31c2fe536864e8,
         type: 3}

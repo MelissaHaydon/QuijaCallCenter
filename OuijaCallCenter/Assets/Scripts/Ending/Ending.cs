@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ending : MonoBehaviour
 {
-    public string[] endText;
+
     string[] endText01;
     public string[] introductionText03;
 
@@ -21,10 +21,11 @@ public class Ending : MonoBehaviour
 
     void Start()
     {
-        AddText();
-        dialogueManager.EndingText(endText, this, talkingSprite);
+
         heldData = FindObjectOfType<HeldData>();
         chosenName = heldData.characterName;
+        AddText();
+        dialogueManager.EndingText(endText01, this, talkingSprite);
     }
 
     void Update()
@@ -38,6 +39,7 @@ public class Ending : MonoBehaviour
         endText01 = new string[4];
         endText01[0] = "Next!";
         endText01[1] = "Ah " + chosenName + " back again";
-        endText01[2] = "Bye Betch";
+        endText01[2] = "I see you're ready to cross now";
+        endText01[3] = "Farewell";
     }
 }
