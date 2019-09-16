@@ -21,6 +21,9 @@ public class Employee : MonoBehaviour
     public GameObject soldPortrait;
     public GameObject moneyReadyCoin;
     public GameObject computerScreen;
+    public GameObject manager;
+    bool beingManaged;
+    public int managerCost;
 
     SpriteRenderer spRend;
     public Sprite talkingSprite;
@@ -54,14 +57,25 @@ public class Employee : MonoBehaviour
         moneyReadyCoin.SetActive(false);
         audioSc = GetComponent<AudioSource>();
         computerScreen.SetActive(true);
+        beingManaged = false;
+        manager.SetActive(false);
 
-}
+    }
     
     void Update()
     {
         if(isActive && !onBreak)
         timer += Time.deltaTime;
-        if (isActive && timer>=earnRate && !onBreak && !moneyReady)
+        if (isActive && timer >= earnRate && !onBreak && beingManaged)
+        {
+            moneyReady = false;
+            timer = 0;
+            coinAnim.SetTrigger("AnimateCoin");
+            moneyManager.AddMoney(moneyEarning);
+            moneyReadyCoin.SetActive(false);
+            audioSc.PlayOneShot(moneyGainSound);
+        }
+        else if (isActive && timer>=earnRate && !onBreak && !moneyReady)
         {
             moneyReady = true;
             moneyReadyCoin.SetActive(true);
@@ -92,6 +106,16 @@ public class Employee : MonoBehaviour
         StartCoroutine(Break(breakTime));
     }
 
+    public void BuyManager()
+    {
+        if (moneyManager.totalMoney >= managerCost)
+        {
+            moneyManager.RemoveMoney(managerCost);
+            manager.SetActive(true);
+            beingManaged = true;
+        }
+    }
+
     IEnumerator Break(float breakTime)
     {
         spRend.sprite = emptyDeskSprite;
@@ -105,7 +129,7 @@ public class Employee : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (moneyReady)
+        if (moneyReady && !beingManaged)
         {
             moneyReady = false;
             timer = 0;
