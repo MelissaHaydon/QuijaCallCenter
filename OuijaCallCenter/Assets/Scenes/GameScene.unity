@@ -2302,7 +2302,7 @@ PrefabInstance:
     - target: {fileID: 199359918985529650, guid: 182c64197b1c99e4a9aa4f8d3a139222,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 182c64197b1c99e4a9aa4f8d3a139222, type: 3}
@@ -2612,6 +2612,7 @@ Transform:
   - {fileID: 1151782179}
   - {fileID: 1522048585}
   - {fileID: 696357002}
+  - {fileID: 1571730955}
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2632,6 +2633,7 @@ MonoBehaviour:
   cost: 250
   purchased: 0
   onBreak: 0
+  disasterOccuring: 0
   happiness: 1
   earnRate: 3
   originalEarnRate: 3
@@ -2644,8 +2646,10 @@ MonoBehaviour:
   talkingSprite: {fileID: 21300000, guid: 258475092e282ae4b877dc1323789e43, type: 3}
   atDeskSprite: {fileID: 21300000, guid: 3b7cf9ec98867a940a842d6d70a540f5, type: 3}
   emptyDeskSprite: {fileID: 21300000, guid: baf1155f9944c3e43be49d38548659fd, type: 3}
+  disasterSprite: {fileID: 0}
   buyButton: {fileID: 1196121699}
   buyCloud: {fileID: 204947546}
+  disasterParticles: {fileID: 0}
   moneyManager: {fileID: 1373620019}
   coinAnim: {fileID: 1633130387}
   timer: 0
@@ -2654,6 +2658,7 @@ MonoBehaviour:
   events:
   - {fileID: 1010504935}
   - {fileID: 115361252}
+  disaster: {fileID: 0}
 --- !u!58 &233159939
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3847,7 +3852,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 258475092e282ae4b877dc1323789e43, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d0ee2497efa0ca74b87d547ca82befa2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9372,7 +9377,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &767742650
 Transform:
   m_ObjectHideFlags: 0
@@ -13353,7 +13358,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 3d8ef54e0bea02f47b9b4b84e7d7ac31, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 47dd8a9dfaca6cc4aadc4b3d5364ec1c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -19756,6 +19761,189 @@ ParticleSystem:
     type: 3}
   m_PrefabInstance: {fileID: 1560860879}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1571730954
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 233159937}
+    m_Modifications:
+    - target: {fileID: 1381637658152444, guid: 182c64197b1c99e4a9aa4f8d3a139222, type: 3}
+      propertyPath: m_Name
+      value: ComputerSmoke
+      objectReference: {fileID: 0}
+    - target: {fileID: 198934978498631354, guid: 182c64197b1c99e4a9aa4f8d3a139222,
+        type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198934978498631354, guid: 182c64197b1c99e4a9aa4f8d3a139222,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4105055661265908, guid: 182c64197b1c99e4a9aa4f8d3a139222, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 4105055661265908, guid: 182c64197b1c99e4a9aa4f8d3a139222, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 4105055661265908, guid: 182c64197b1c99e4a9aa4f8d3a139222, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4105055661265908, guid: 182c64197b1c99e4a9aa4f8d3a139222, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4105055661265908, guid: 182c64197b1c99e4a9aa4f8d3a139222, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4105055661265908, guid: 182c64197b1c99e4a9aa4f8d3a139222, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4105055661265908, guid: 182c64197b1c99e4a9aa4f8d3a139222, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4105055661265908, guid: 182c64197b1c99e4a9aa4f8d3a139222, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4105055661265908, guid: 182c64197b1c99e4a9aa4f8d3a139222, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4105055661265908, guid: 182c64197b1c99e4a9aa4f8d3a139222, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4105055661265908, guid: 182c64197b1c99e4a9aa4f8d3a139222, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4105055661265908, guid: 182c64197b1c99e4a9aa4f8d3a139222, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 21.718542
+      objectReference: {fileID: 0}
+    - target: {fileID: 4105055661265908, guid: 182c64197b1c99e4a9aa4f8d3a139222, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 21.718542
+      objectReference: {fileID: 0}
+    - target: {fileID: 4105055661265908, guid: 182c64197b1c99e4a9aa4f8d3a139222, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 21.718542
+      objectReference: {fileID: 0}
+    - target: {fileID: 1290561967851464, guid: 182c64197b1c99e4a9aa4f8d3a139222, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512867984937328, guid: 182c64197b1c99e4a9aa4f8d3a139222, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198137592200723928, guid: 182c64197b1c99e4a9aa4f8d3a139222,
+        type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 198137592200723928, guid: 182c64197b1c99e4a9aa4f8d3a139222,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.6698113
+      objectReference: {fileID: 0}
+    - target: {fileID: 198137592200723928, guid: 182c64197b1c99e4a9aa4f8d3a139222,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.6698113
+      objectReference: {fileID: 0}
+    - target: {fileID: 198137592200723928, guid: 182c64197b1c99e4a9aa4f8d3a139222,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.6698113
+      objectReference: {fileID: 0}
+    - target: {fileID: 198137592200723928, guid: 182c64197b1c99e4a9aa4f8d3a139222,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.r
+      value: 0.3773585
+      objectReference: {fileID: 0}
+    - target: {fileID: 198137592200723928, guid: 182c64197b1c99e4a9aa4f8d3a139222,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.g
+      value: 0.3773585
+      objectReference: {fileID: 0}
+    - target: {fileID: 198137592200723928, guid: 182c64197b1c99e4a9aa4f8d3a139222,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.b
+      value: 0.3773585
+      objectReference: {fileID: 0}
+    - target: {fileID: 198137592200723928, guid: 182c64197b1c99e4a9aa4f8d3a139222,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.r
+      value: 0.8301887
+      objectReference: {fileID: 0}
+    - target: {fileID: 198137592200723928, guid: 182c64197b1c99e4a9aa4f8d3a139222,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.g
+      value: 0.8301887
+      objectReference: {fileID: 0}
+    - target: {fileID: 198137592200723928, guid: 182c64197b1c99e4a9aa4f8d3a139222,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.b
+      value: 0.8301887
+      objectReference: {fileID: 0}
+    - target: {fileID: 199964757441050592, guid: 182c64197b1c99e4a9aa4f8d3a139222,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 199359918985529650, guid: 182c64197b1c99e4a9aa4f8d3a139222,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 199359918985529650, guid: 182c64197b1c99e4a9aa4f8d3a139222,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -47053083
+      objectReference: {fileID: 0}
+    - target: {fileID: 199359918985529650, guid: 182c64197b1c99e4a9aa4f8d3a139222,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633378893765988, guid: 182c64197b1c99e4a9aa4f8d3a139222, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.46690512
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633378893765988, guid: 182c64197b1c99e4a9aa4f8d3a139222, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.46690512
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633378893765988, guid: 182c64197b1c99e4a9aa4f8d3a139222, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.46690512
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633378893765988, guid: 182c64197b1c99e4a9aa4f8d3a139222, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.047
+      objectReference: {fileID: 0}
+    - target: {fileID: 4633378893765988, guid: 182c64197b1c99e4a9aa4f8d3a139222, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.135
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 182c64197b1c99e4a9aa4f8d3a139222, type: 3}
+--- !u!4 &1571730955 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4105055661265908, guid: 182c64197b1c99e4a9aa4f8d3a139222,
+    type: 3}
+  m_PrefabInstance: {fileID: 1571730954}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1578124404
 GameObject:
   m_ObjectHideFlags: 0
@@ -20302,6 +20490,7 @@ MonoBehaviour:
   cost: 150
   purchased: 0
   onBreak: 0
+  disasterOccuring: 0
   happiness: 1
   earnRate: 3
   originalEarnRate: 3
@@ -20314,8 +20503,10 @@ MonoBehaviour:
   talkingSprite: {fileID: 21300000, guid: 3d8ef54e0bea02f47b9b4b84e7d7ac31, type: 3}
   atDeskSprite: {fileID: 21300000, guid: 8733c397cd4ade14980f63eb683d2c04, type: 3}
   emptyDeskSprite: {fileID: 21300000, guid: 5a76c2229884c974b92eef1cd961e62d, type: 3}
+  disasterSprite: {fileID: 0}
   buyButton: {fileID: 1038848001}
   buyCloud: {fileID: 1560860881}
+  disasterParticles: {fileID: 0}
   moneyManager: {fileID: 1373620019}
   coinAnim: {fileID: 494017653}
   timer: 0
@@ -20323,6 +20514,7 @@ MonoBehaviour:
   moneyGainSound: {fileID: 8300000, guid: 10c6fc9ad279b9b48b18939986475a84, type: 3}
   events:
   - {fileID: 1596327457}
+  disaster: {fileID: 0}
 --- !u!58 &1601449772
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -20738,7 +20930,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 5b2d270d73147d448bfbc483a7a1d609, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a8c2b6236b46fe6448c8da4e9f0236d5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -24275,6 +24467,7 @@ MonoBehaviour:
   cost: 100
   purchased: 0
   onBreak: 0
+  disasterOccuring: 0
   happiness: 1
   earnRate: 3
   originalEarnRate: 3
@@ -24287,8 +24480,10 @@ MonoBehaviour:
   talkingSprite: {fileID: 21300000, guid: 5b2d270d73147d448bfbc483a7a1d609, type: 3}
   atDeskSprite: {fileID: 21300000, guid: e92a3c4ad32b64e4893b44385dee40b2, type: 3}
   emptyDeskSprite: {fileID: 21300000, guid: e2c929803d2caba4bac1a9a14bb5ca45, type: 3}
+  disasterSprite: {fileID: 0}
   buyButton: {fileID: 1228494159}
   buyCloud: {fileID: 553836656}
+  disasterParticles: {fileID: 0}
   moneyManager: {fileID: 1373620019}
   coinAnim: {fileID: 935256307}
   timer: 0
@@ -24297,6 +24492,7 @@ MonoBehaviour:
   events:
   - {fileID: 1108392169}
   - {fileID: 208862274}
+  disaster: {fileID: 0}
 --- !u!58 &1958443650
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -24767,6 +24963,7 @@ MonoBehaviour:
   cost: 200
   purchased: 0
   onBreak: 0
+  disasterOccuring: 0
   happiness: 1
   earnRate: 3
   originalEarnRate: 3
@@ -24779,8 +24976,10 @@ MonoBehaviour:
   talkingSprite: {fileID: 21300000, guid: 98d5f019a7d080044b4bc3887d14d1f9, type: 3}
   atDeskSprite: {fileID: 21300000, guid: 4fe10f2c811c7634f97a5ff6ab0bb88b, type: 3}
   emptyDeskSprite: {fileID: 21300000, guid: c2ffa9e0ce3287944b3eaffdbca40ad7, type: 3}
+  disasterSprite: {fileID: 0}
   buyButton: {fileID: 2066222949}
   buyCloud: {fileID: 1286445730}
+  disasterParticles: {fileID: 0}
   moneyManager: {fileID: 1373620019}
   coinAnim: {fileID: 1995869557}
   timer: 0
@@ -24789,6 +24988,7 @@ MonoBehaviour:
   events:
   - {fileID: 885782854}
   - {fileID: 1135799803}
+  disaster: {fileID: 0}
 --- !u!58 &1997430088
 CircleCollider2D:
   m_ObjectHideFlags: 0

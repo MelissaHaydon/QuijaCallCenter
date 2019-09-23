@@ -12,6 +12,7 @@ public class Employee : MonoBehaviour
     public int cost;
     public bool purchased;
     public bool onBreak;
+    public bool disasterOccuring;
 
     public float happiness;
     public float earnRate;
@@ -29,9 +30,11 @@ public class Employee : MonoBehaviour
     public Sprite talkingSprite;
     public Sprite atDeskSprite;
     public Sprite emptyDeskSprite;
+    public Sprite disasterSprite;
     public Button buyButton;
 
     public ParticleSystem buyCloud;
+    public ParticleSystem disasterParticles;
     public MoneyManager moneyManager;
 
     public Animator coinAnim;
@@ -41,12 +44,14 @@ public class Employee : MonoBehaviour
     public AudioClip moneyGainSound;
 
     public Event[] events;
+    public Disasters disaster;
 
     void Start()
     {
         spRend = GetComponent<SpriteRenderer>();
         timer = 0;
         buyCloud.gameObject.SetActive(false);
+        disasterParticles.gameObject.SetActive(false);
         buyCloud.Stop();
         gameObject.SetActive(false);
         soldPortrait.gameObject.SetActive(false);
@@ -58,15 +63,20 @@ public class Employee : MonoBehaviour
         audioSc = GetComponent<AudioSource>();
         computerScreen.SetActive(true);
         beingManaged = false;
+        disasterOccuring = false;
         manager.SetActive(false);
-
     }
     
     void Update()
     {
-        if(isActive && !onBreak)
+        if(isActive && !onBreak && !disasterOccuring)
         timer += Time.deltaTime;
-        if (isActive && timer >= earnRate && !onBreak && beingManaged)
+        if (disasterOccuring)
+        {
+            spRend.sprite = disasterSprite;
+            disasterParticles.gameObject.SetActive(true);
+        }
+        else if (isActive && timer >= earnRate && !onBreak && beingManaged)
         {
             moneyReady = false;
             timer = 0;
@@ -104,6 +114,20 @@ public class Employee : MonoBehaviour
     public void TakeBreak(float breakTime)
     {
         StartCoroutine(Break(breakTime));
+    }
+
+    public void StartDisaster()
+    {
+        spRend.sprite = disasterSprite;
+        disasterParticles.gameObject.SetActive(true);
+        disasterOccuring = true;
+    }
+
+    public void DisasterOver()
+    {
+        spRend.sprite = atDeskSprite;
+        disasterOccuring = false;
+        disasterParticles.gameObject.SetActive(false);
     }
 
     public void BuyManager()
